@@ -7,3 +7,7 @@ from django.views.decorators.csrf import csrf_exempt
 @csrf_exempt
 def index(request):
 	return HttpResponse('test');
+
+@csrf_exempt
+def login(request):
+	return HttpResponse('login');
