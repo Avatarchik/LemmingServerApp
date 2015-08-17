@@ -3,7 +3,6 @@ import sys, traceback
 from django.http import HttpResponse
 from django.views.decorators.csrf import csrf_exempt
 from protocol.lib import response_maker
-
 @csrf_exempt
 def route(request):
 	splitedPaths = request.path.split('/')
@@ -14,6 +13,10 @@ def route(request):
 	print('Requested value => ' + request.path)
 	print('Requested path => ' + protocolPath)
 	print('Requested Protocol => ' + protocol)
+
+	if request.method == 'GET':
+		print('GET Request is not valid request')
+		return HttpResponse(response_maker.error('get reqeust is not valid'))
 
 	try:
 		protocolModule  = __import__('protocol.' + protocolPath, globals(), locals(), [ protocol ], -1)
