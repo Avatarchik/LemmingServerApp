@@ -3,6 +3,8 @@ import sys, traceback
 from django.http import HttpResponse
 from django.views.decorators.csrf import csrf_exempt
 from protocol.lib import response_maker
+from django.http import QueryDict
+
 @csrf_exempt
 def route(request):
 	splitedPaths = request.path.split('/')
@@ -25,5 +27,6 @@ def route(request):
 		traceback.print_exc(file=sys.stdout)
 		return HttpResponse(response_maker.error('invalid protocol'))
 
+	request.param = QueryDict(request.body)
 	response = protocolModule.actionHandler(request)
 	return HttpResponse(response)
