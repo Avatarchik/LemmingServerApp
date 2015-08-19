@@ -5,5 +5,10 @@ def actionHandler(request):
 	facebookID = request.param['facebookID']
 
 	user = account.getUser(facebookID)
-	return response_maker.success(user.nickName)
+
+	if (user == None):
+		return response_maker.error('not existed user')
+	else:
+		request.session['facebookID'] = facebookID
+		return response_maker.success(user.name)
 

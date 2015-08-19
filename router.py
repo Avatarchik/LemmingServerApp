@@ -5,6 +5,12 @@ from django.views.decorators.csrf import csrf_exempt
 from protocol.lib import response_maker
 from django.http import QueryDict
 
+def checkLogin(request):
+	if (request.param['sessionRequired'] == 'true'):
+		return request.session['facebookID']
+	else:
+		return
+
 @csrf_exempt
 def route(request):
 	splitedPaths = request.path.split('/')
@@ -22,11 +28,20 @@ def route(request):
 
 	try:
 		protocolModule  = __import__('protocol.' + protocolPath, globals(), locals(), [ protocol ], -1)
-	except ImportError:
-		print('Invalid protocol error')
-		traceback.print_exc(file=sys.stdout)
-		return HttpResponse(response_maker.error('invalid protocol'))
+	except ImportError:	
+		return HttpResponse(response_maker.error('Invalid protocol'))
 
 	request.param = QueryDict(request.body)
-	response = protocolModule.actionHandler(request)
-	return HttpResponse(response)
+
+	try:
+		checkLogin(request)
+	except KeyError:
+		return HttpResponse(response_maker.error('You do not have permission'))
+
+	try:
+		return HttpResponse(protocolModule.actionHandler(request))
+	except:
+		error = traceback.format_exc()
+		print(error)
+		return HttpResponse(response_maker.error(error))
+
