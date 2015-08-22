@@ -7,7 +7,7 @@ def actionHandler(request):
 	user = account.getUser(facebookID)
 
 	if (user == None):
-		return response_maker.error('not existed user')
+		return response_maker.error('invalidUser')
 	else:
 		request.session['facebookID'] = facebookID
 		return response_maker.success(user.name)
