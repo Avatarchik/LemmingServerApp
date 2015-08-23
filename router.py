@@ -21,6 +21,7 @@ def route(request):
 	print('Requested value => ' + request.path)
 	print('Requested path => ' + protocolPath)
 	print('Requested Protocol => ' + protocol)
+	print('Requested Param => ' + request.body)
 
 	if request.method == 'GET':
 		print('GET Request is not valid request')
