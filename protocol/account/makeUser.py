@@ -1,6 +1,6 @@
 import sys, traceback
 
-from ..lib import response_maker
+from ..common import response_maker
 from ..db import account
 
 def actionHandler(request):

@@ -2,7 +2,7 @@ import sys, traceback
 
 from django.http import HttpResponse
 from django.views.decorators.csrf import csrf_exempt
-from protocol.lib import response_maker
+from protocol.common import response_maker
 from django.http import QueryDict
 
 def checkLogin(request):
