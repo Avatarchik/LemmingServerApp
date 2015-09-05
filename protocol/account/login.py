@@ -10,5 +10,5 @@ def actionHandler(request):
 		return response_maker.error('invalidUser')
 	else:
 		request.session['facebookID'] = facebookID
-		return response_maker.success(user.name)
+		return response_maker.success()
 

@@ -1,6 +1,6 @@
 import json
 
-def success(value = ''):
+def success(value = {}):
 	return json.dumps({ 'status': 'ok', 'result': [value] })
 
 def error(error):
