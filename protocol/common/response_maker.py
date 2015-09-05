@@ -4,4 +4,4 @@ def success(value = ''):
 	return json.dumps({ 'status': 'ok', 'result': [value] })
 
 def error(error):
-	return json.dumps({ 'status': 'fail', 'result': error })
+	return json.dumps({ 'status': 'fail', 'errorResult': error })
