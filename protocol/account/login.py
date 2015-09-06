@@ -10,5 +10,8 @@ def actionHandler(request):
 		return response_maker.error('invalidUser')
 	else:
 		request.session['userID'] = userID
-		return response_maker.success()
+		return response_maker.success({
+				nickName = user.nickName,
+				record = user.record
+			})
 
