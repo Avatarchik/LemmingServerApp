@@ -11,7 +11,7 @@ def actionHandler(request):
 	else:
 		request.session['userID'] = userID
 		return response_maker.success({
-			nickName : user.nickName,
-			record : user.record
+			'nickName' : user.nickName,
+			'record' : user.record
 			})
 
