@@ -4,9 +4,10 @@ from ..common import response_maker
 from ..db import account
 
 def actionHandler(request):
-	facebookID = request.param['facebookID']
-	name = request.param['name']
+	userID = request.param['userID']
+	userType = request.param['userType']
+	nickName = request.param['nickName']
 
-	account.makeUser(facebookID, name)
+	account.makeUser(userID, userType, nickName)
 	return response_maker.success()
 

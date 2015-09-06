@@ -1,12 +1,12 @@
 from ...models import User
 
-def getUser(facebook_id):
+def getUser(user_id):
 	try:
-		return User.objects.get(facebookID = facebook_id)
+		return User.objects.get(userID = user_id)
 	except User.DoesNotExist:
 		return None
 
-def makeUser(facebook_id, str_name):
+def makeUser(user_id, user_type, str_nickName):
 	# FIXME: Check duplicated user.
-	user = User(facebook_id, str_name)
+	user = User(user_id, user_type, str_nickName)
 	user.save()
