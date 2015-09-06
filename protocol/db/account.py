@@ -10,3 +10,9 @@ def makeUser(user_id, user_type, str_nickName):
 	# FIXME: Check duplicated user.
 	user = User(userID = user_id, userType = user_type, nickName = str_nickName)
 	user.save()
+
+def updateRecord(user_id, record):
+	user = User.objects.get(userID = user_id)
+	user.record = record
+	user.save()
+

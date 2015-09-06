@@ -7,7 +7,7 @@ from django.http import QueryDict
 
 def checkLogin(request):
 	if (request.param['sessionRequired'] == 'true'):
-		return request.session['facebookID']
+		return request.session['userID']
 	else:
 		return
 
