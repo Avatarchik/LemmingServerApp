@@ -8,5 +8,5 @@ def getUser(user_id):
 
 def makeUser(user_id, user_type, str_nickName):
 	# FIXME: Check duplicated user.
-	user = User(user_id, user_type, str_nickName)
+	user = User(userID = user_id, userType = user_type, nickName = str_nickName)
 	user.save()
