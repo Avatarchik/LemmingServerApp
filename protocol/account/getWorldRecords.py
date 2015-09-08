@@ -7,7 +7,8 @@ def actionHandler(request):
 	userRecords = map(lambda user: {
 		'nickName' : user.nickName,
 		'record' : user.record,
-		'userID' : user.userID
+		'userID' : user.userID,
+		'userType' : user.userType
 	}, users)
 
 	for i in range(len(userRecords)):
