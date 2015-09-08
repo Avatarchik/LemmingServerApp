@@ -16,3 +16,8 @@ def updateRecord(user_id, record):
 	user.record = record
 	user.save()
 
+def getRankUsers():
+	limitOfUsers = 50;
+	rankUsers = User.objects.all().order_by('-record')[:limitOfUsers]
+	return rankUsers
+
